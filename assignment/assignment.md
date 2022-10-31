@@ -12,7 +12,6 @@ The project which you have built, you need to modify the architecture of the pro
 ## Task 3.
 
 
-
 ## Task 4.
 
 Try same project using different web framework for example FastAPI
