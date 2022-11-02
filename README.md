@@ -1,8 +1,6 @@
 
 <h1 align="center">Python Face Detection App </h1>
 
-Application url : [URL_Shortner](https://ineuronurl.herokuapp.com/)
-
 <h5> This Application will detect object of interest (human face) in real time. Application will detect face either from user uploaded image or frames from web camera. </h5>
 
 ## <img src="https://c.tenor.com/NCRHhqkXrJYAAAAi/programmers-go-internet.gif" width="25">  <b>Approach</b>
