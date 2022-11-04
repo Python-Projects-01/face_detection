@@ -4,31 +4,18 @@ from face_detection.logger import logging
 
 class FaceDetectionWebcam:
 
-    def load_camera(self):
+    def load_camera(self,video):
         try:
+            print(video)
             # Create a CascadeClassifier Object
             face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
-            video_capture = cv2.VideoCapture(0)
+            # video_capture = cv2.VideoCapture(0)
+            video_capture = cv2.VideoCapture(video)
 
             while True:
                 # Capture frame-by-frame
                 ret, frame = video_capture.read()
-
-                # Reading image as gray scale image
-                gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-                # Search the coordinates of the image
-                faces = face_cascade.detectMultiScale(
-                    gray,
-                    scaleFactor=1.1,
-                    minNeighbors=5,
-                    minSize=(30, 30)
-                )
-
-                # Draw a rectangle around the faces
-                for (x, y, w, h) in faces:
-                    cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
                 # Display the resulting frame
                 cv2.imshow('Video', frame)

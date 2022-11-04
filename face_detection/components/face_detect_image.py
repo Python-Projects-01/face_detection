@@ -1,4 +1,4 @@
-import cv2, os, sys
+import cv2, os, sys, shutil
 from face_detection.exception import FaceDetectionException
 from face_detection.logger import logging
 
@@ -32,13 +32,26 @@ class FaceDetectionImage:
 
             # Opens a window to show image
             # Here People is name of window
-            cv2.imshow("People", img)
+            #cv2.imshow("People", img)
+            saved_file_path = os.path.join(os.getcwd(),'uploads\\images\\')
 
-            # Wait until user presses key
-            cv2.waitKey(0)
+            absolute_path =os.path.abspath(saved_file_path)
+           
 
-            # closes the window based on waitkey parameter 
-            cv2.destroyAllWindows()
+            if os.path.exists(absolute_path):
+                shutil.rmtree(absolute_path)
+
+            destination_path = os.makedirs(absolute_path)
+
+            filename = 'savedImage.jpg'
+
+            cv2.imwrite(filename, img)
+
+            source_path = os.path.join(os.getcwd())
+
+            
+
+            
         except Exception as e:
             sharing = FaceDetectionException(e,sys)
             logging.info(sharing.error_message)

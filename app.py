@@ -6,6 +6,7 @@ from face_detection.logger import logging
 from face_detection.exception import FaceDetectionException
 from face_detection.components.face_detect_image import FaceDetectionImage
 from face_detection.components.face_detect_webcam import FaceDetectionWebcam
+from ast import literal_eval
 
 from flask import send_from_directory
 
@@ -33,6 +34,9 @@ def allowed_file(filename):
 
 @app.route('/image', methods=['GET', 'POST'])
 def upload_file():
+    source_path = r'C:\Users\thaku\INEURON_DATA\PYTHON\face_detection\static\images\savedImage.jpg'
+
+    print("source",source_path)
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -46,7 +50,7 @@ def upload_file():
             print('No file selected')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            print(file.filename)
+            #print(file.filename)
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('download_file', name=filename))
@@ -62,9 +66,14 @@ def download_file(name):
 @app.route('/webcam', methods=['GET', 'POST'])
 def webcam():
     try:
-        face_detect_web_obj = FaceDetectionWebcam()
-        face_detect_web_obj.load_camera()
-        return redirect(url_for('index'))
+        query_param_recieved = request.args
+        query_param_dict = query_param_recieved.to_dict()
+        received_video_link = query_param_dict.get("arg1")
+        if received_video_link is not None:
+            face_detect_web_obj = FaceDetectionWebcam()
+            face_detect_web_obj.load_camera(received_video_link)
+            
+        return render_template('webcam.html')
         
     except Exception as e:
         raise FaceDetectionException(e,sys)
