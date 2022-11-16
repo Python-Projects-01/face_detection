@@ -2,4 +2,3 @@ Flask
 opencv-contrib-python
 numpy
 MoviePy
-gunicorn
