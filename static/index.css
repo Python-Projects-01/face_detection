@@ -3,7 +3,7 @@
 .navbar-light .navbar-brand {margin-left: auto;margin-right: auto;}
 
 body {
-    background-color: #E3F2FD;
+  background-color: #E3F2FD;
 }
 
 .heading{
@@ -37,10 +37,12 @@ body {
 
   }
     
-
-
 .cards:hover{
 
     box-shadow: 5px 6px 6px 2px #e9ecef;
     transform: scale(1.1);
+}
+.btn .btn-primary{
+  background-color: #f42e79;
+  color: #000;
 }

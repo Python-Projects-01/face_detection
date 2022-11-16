@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/video.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="btn">
+        <div class="play"> </div>
+        <p>Detect Face</p>
+    </div>
+    <div class="clip">
+        <video  controls>
+            <source src="{{ url_for('static', filename='output/lzeoarecording.webm') }}" type="video/mp4">
+        </video>
+        <b class="close">Close</b>
+    </div>
+</body>
+<script>
+    let btn = document.querySelector('.btn');
+    let clip = document.querySelector('.clip');
+    let closed = document.querySelector('.close');
+    let video = document.querySelector('video')
+
+    btn.onclick = function(){
+        btn.classList.add('active');
+        clip.classList.add('active');
+        video.play();
+        video.currentTime = 0;
+    }
+    closed.onclick = function(){
+        btn.classList.remove('active');
+        clip.classList.remove('active');
+        video.pause();
+    }
+</script>
+
+</html>

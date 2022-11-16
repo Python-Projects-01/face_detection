@@ -1,4 +1,4 @@
-import cv2, os, sys, shutil
+import cv2, os, sys, shutil, random, string
 from face_detection.exception import FaceDetectionException
 from face_detection.logger import logging
 
@@ -33,7 +33,7 @@ class FaceDetectionImage:
             # Opens a window to show image
             # Here People is name of window
             #cv2.imshow("People", img)
-            saved_file_path = os.path.join(os.getcwd(),'uploads\\images\\')
+            '''saved_file_path = os.path.join(os.getcwd(),'uploads\\images\\')
 
             absolute_path =os.path.abspath(saved_file_path)
            
@@ -42,15 +42,16 @@ class FaceDetectionImage:
                 shutil.rmtree(absolute_path)
 
             destination_path = os.makedirs(absolute_path)
-
-            filename = 'savedImage.jpg'
-
-            cv2.imwrite(filename, img)
-
-            source_path = os.path.join(os.getcwd())
-
-            
-
+'''         
+            destination_path = os.path.join(os.getcwd(),'static','output')
+            shutil.rmtree(destination_path)
+            os.makedirs(destination_path,exist_ok=True)
+            file_string = ''.join(random.choices(string.ascii_lowercase +
+                             string.digits, k=4))+'.jpg'
+        
+            cv2.imwrite(file_string, img)
+            source_path= os.path.join(os.getcwd(),file_string)
+            shutil.move(source_path,destination_path)
             
         except Exception as e:
             sharing = FaceDetectionException(e,sys)

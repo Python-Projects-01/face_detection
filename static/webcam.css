@@ -1,0 +1,84 @@
+html{
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+}
+body{
+    padding: 0;
+    display: flex;
+    background: 333;
+    min-height: 100vh;
+    background: linear-gradient(135deg,#0000 0%,#333 48%,#686868 100%);
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+}
+.video-player{
+    max-width: 750px;
+    position: relative;
+    overflow: hidden;
+}
+video{
+    border:10px solid #fff;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    width: 100%;
+}
+.player-controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.player-controls .play-button{
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 15px;
+    font-size: 15px;
+}
+a{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    width: 185px;
+    height: 50px;
+    background: #fff;
+    text-align: center;
+    line-height: 50px;
+    color: #262626;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    text-decoration: none;
+    transition: 0.5s;
+    padding-left: 4px;
+}
+a:hover{
+    letter-spacing: 2px;
+    background: #1565c0;
+}
+a:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -25px;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border: 25px solid transparent;
+    border-right: 25px solid #fff;
+    border-left: none;
+    box-sizing: border-box;
+}
+a:after{
+    content: '';
+    position: absolute;
+    top:0;
+    right:-25px;
+    width:0;
+    height:0;
+    background: transparent;
+    border: 25px solid transparent;
+    border-left: 25px solid #fff;
+    border-right: none;
+}
